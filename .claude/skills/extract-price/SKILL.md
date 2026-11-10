@@ -6,10 +6,10 @@ description: Извлекает цену товара с одной страни
 # Extract price
 
 ## Вход
-URL одной страницы товара.
+URL страницы одного товара, на которой указана цена.
 
 ## Выход
-Ровно один JSON-объект, без пояснений до или после:
+Ровно один JSON-объект без пояснений до или после, со следующими полями:
 
 ```json
 {"regular_price": 12990, "sale_price": 9990, "has_credit": true}
@@ -20,11 +20,12 @@ URL одной страницы товара.
 - `has_credit` — `true`, если на странице есть рассрочка или кредит; иначе `false`.
 
 ## Шаги
-1. Загрузи страницу по URL.
-2. Найди цены, проверяя источники по порядку (первый надёжный источник важнее):
-   1. Разметка JSON-LD (`<script type="application/ld+json">`, тип `Product` → `offers`).
-   2. Мета-теги: `product:price:amount`, `og:price:amount`, атрибуты `itemprop="price"`.
-   3. Видимый текст рядом с кнопкой «В корзину» / «Купить».
+1. Загрузи страницу по URL на входе.
+2. Найди цену:
+   1. Для сайта nix.ru — элемент с классом `price pc-component-non-used pc-component-inactive`.
+   2. Разметка JSON-LD (`<script type="application/ld+json">`, тип `Product` → `offers`).
+   3. Мета-теги: `product:price:amount`, `og:price:amount`, `itemprop="price"`.
+   4. Видимый текст рядом с кнопкой «В корзину» / «Купить».
 3. Определи цены:
    - Если на странице две цены (одна зачёркнута) — зачёркнутая это `regular_price`, другая — `sale_price`.
    - Если цена одна — это `regular_price`, а `sale_price` = `null`.
