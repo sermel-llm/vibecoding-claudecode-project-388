@@ -23,9 +23,11 @@ URL страницы одного товара, на которой указан
 1. Загрузи страницу по URL на входе.
 2. Найди цену:
    1. Для сайта nix.ru — элемент с классом `price pc-component-non-used pc-component-inactive`.
-   2. Разметка JSON-LD (`<script type="application/ld+json">`, тип `Product` → `offers`).
-   3. Мета-теги: `product:price:amount`, `og:price:amount`, `itemprop="price"`.
-   4. Видимый текст рядом с кнопкой «В корзину» / «Купить».
+   2. Для сайта dns-shop.ru - элемент с классом `product-buy__price`.
+   3. Для сайта onlinetrade.ru - элемент с классом `js__actualPrice`.
+   4. Разметка JSON-LD (`<script type="application/ld+json">`, тип `Product` → `offers`).
+   5. Мета-теги: `product:price:amount`, `og:price:amount`, `itemprop="price"`.
+   6. Видимый текст рядом с кнопкой «В корзину» / «Купить».
 3. Определи цены:
    - Если на странице две цены (одна зачёркнута) — зачёркнутая это `regular_price`, другая — `sale_price`.
    - Если цена одна — это `regular_price`, а `sale_price` = `null`.
