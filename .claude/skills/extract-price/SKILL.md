@@ -25,7 +25,7 @@ URL страницы одного товара, на которой указан
 1. Загрузи страницу по URL на входе.
 2. Найди цену. Для известных сайтов сначала смотри источник из подсказки:
    1. nix.ru — элемент с классом `price pc-component-non-used pc-component-inactive`.
-   2. regard.ru — JSON-LD (`Product` → `offers.price`).
+   2. regard.ru — JSON-LD (`Product` → `offers.price`). Рассрочка на сайте есть: блок `installment` («Рассрочка», «Оплата частями») в данных страницы означает `has_credit: true`.
    3. oldi.ru, xcom-shop.ru — `itemprop="price"`.
    4. kns.ru — `itemprop="price"` содержит цену со скидкой; обычная цена указана только в тексте страницы рядом со значком скидки (например, «1,02%»). Проверяй обе.
    5. dns-shop.ru — класс `product-buy__price`. При обычной загрузке сайт блокирует доступ (Qrator); подсказка для работы через браузер.
