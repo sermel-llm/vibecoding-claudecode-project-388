@@ -1,5 +1,5 @@
 ---
-name: telegram-summary
+name: tg-summary
 description: Превращает готовый список значимых изменений цен от трекера в короткую сводку для Telegram. Вызывается из скилла tracker. Не ищет цены и не решает, что значимо, — только оформляет текст.
 model: haiku
 tools: Read
